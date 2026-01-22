@@ -1,12 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XRL2SVN0YF"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XRL2SVN0YF');
+    </script>
+    
+
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="version" content="1.0.2">
+    <meta name="version" content="1.0.4">
+    <meta name="gs-app-id" content="wordboxing">
     <title>Word Boxing 🥊</title>
-    <!-- Version 1.0.2 -->
+    <!-- Version 1.0.4 -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥊</text></svg>">
     
     <!-- PWA Support -->
@@ -3381,7 +3392,7 @@
 
             <!-- 6. GAME INFO -->
             <div class="settings-version">
-                Word Boxing v1.0.2<br>
+                Word Boxing v1.0.4<br>
                 <span style="font-size: 0.7rem;">© 2026 RB Games</span>
             </div>
         </div>
@@ -3484,7 +3495,7 @@
         </div>
     </div>
 
-    <div class="version">v1.0.2 &bull; Word Boxing</div>
+    <div class="version">v1.0.4 &bull; Word Boxing</div>
 
     <script>
         // ============ GAME SHELF INTEGRATION MODULE v1.0.2 ============
@@ -8659,7 +8670,7 @@ wordboxing.com`;
 
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
-            console.log('Word Boxing v1.0.2 - Boxing bell sounds');
+            console.log('Word Boxing v1.0.4 - Boxing bell sounds');
             console.log('Device ID:', deviceId);
             console.log('Firebase ready:', isFirebaseReady);
 
@@ -8668,7 +8679,7 @@ wordboxing.com`;
                 name: 'Word Boxing',
                 icon: '🥊',
                 url: 'wordboxing.com',
-                version: '1.0.2',
+                version: '1.0.4',
                 type: 'multiplayer'
             });
 
@@ -8790,56 +8801,8 @@ wordboxing.com`;
         }
     </script>
     
-    <!-- PWA Install Banner (iOS + Android) -->
-    <style>
-        .pwa-install-banner {
-            position: fixed;
-            bottom: 20px;
-            left: 12px;
-            right: 12px;
-            background: linear-gradient(135deg, #c41e3a, #8b1528);
-            border: 2px solid #ffd700;
-            border-radius: 16px;
-            padding: 16px;
-            z-index: 9999;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-            display: none;
-            animation: pwaSlideUp 0.3s ease-out;
-            cursor: pointer;
-            font-family: 'Oswald', sans-serif;
-        }
-        .pwa-install-banner.visible { display: block; }
-        @keyframes pwaSlideUp {
-            from { transform: translateY(100%); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        .pwa-install-content { display: flex; align-items: center; gap: 12px; }
-        .pwa-install-icon { font-size: 2rem; }
-        .pwa-install-text { flex: 1; color: #eee; }
-        .pwa-install-title { font-weight: 700; font-size: 1rem; margin-bottom: 4px; }
-        .pwa-install-desc { font-size: 0.85rem; opacity: 0.9; font-family: 'Roboto', sans-serif; }
-        .pwa-install-close { background: rgba(255,255,255,0.2); border: none; border-radius: 50%; width: 28px; height: 28px; color: #eee; font-size: 1rem; cursor: pointer; }
-        .pwa-install-arrow { display: none; justify-content: center; align-items: center; margin-top: 12px; color: #ffd700; font-size: 14px; animation: pwaArrowBounce 1s ease-in-out infinite; font-family: 'Roboto', sans-serif; }
-        @keyframes pwaArrowBounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
-    </style>
-    
-    <div class="pwa-install-banner" id="pwa-install-banner" onclick="triggerPWAInstall()">
-        <div class="pwa-install-content">
-            <div class="pwa-install-icon">🥊</div>
-            <div class="pwa-install-text">
-                <div class="pwa-install-title">Install Word Boxing</div>
-                <div class="pwa-install-desc" id="pwa-install-desc">Add to your home screen</div>
-            </div>
-            <button class="pwa-install-close" onclick="dismissPWABanner(event)">✕</button>
-        </div>
-        <div class="pwa-install-arrow" id="pwa-install-arrow">
-            <span style="font-size: 24px;">↓</span>
-            <span style="margin-left: 8px;">Tap Safari's share button below</span>
-        </div>
-    </div>
-    
+    <!-- PWA Service Worker Registration -->
     <script>
-        // PWA Service Worker Registration
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('/sw.js')
@@ -8857,70 +8820,24 @@ wordboxing.com`;
                     }).catch((e) => console.log('[WordBoxing] SW failed:', e));
             });
         }
-        
-        // PWA Install System
-        window.deferredPrompt = null;
-        
-        function isStandalone() {
-            return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
-        }
-        
-        function isIOS() {
-            return /iPad|iPhone|iPod/.test(navigator.userAgent);
-        }
-        
-        function showPWABanner() {
-            if (isStandalone()) return;
-            const dismissed = localStorage.getItem('wb_install_dismissed');
-            if (dismissed && (Date.now() - parseInt(dismissed)) < 24 * 60 * 60 * 1000) return;
-            
-            const banner = document.getElementById('pwa-install-banner');
-            const desc = document.getElementById('pwa-install-desc');
-            const arrow = document.getElementById('pwa-install-arrow');
-            
-            if (isIOS()) {
-                desc.innerHTML = 'Tap Safari\'s <span style="font-size:1.2em;">⬆</span> share button, then "Add to Home Screen"';
-                arrow.style.display = 'flex';
-            } else if (window.deferredPrompt) {
-                desc.innerHTML = 'Tap to install the app';
-                arrow.style.display = 'none';
-            } else {
-                desc.innerHTML = 'Use browser menu → "Add to Home Screen"';
-                arrow.style.display = 'none';
-            }
-            banner.classList.add('visible');
-        }
-        
-        function dismissPWABanner(event) {
-            if (event) event.stopPropagation();
-            document.getElementById('pwa-install-banner').classList.remove('visible');
-            localStorage.setItem('wb_install_dismissed', Date.now().toString());
-        }
-        
-        function triggerPWAInstall() {
-            if (window.deferredPrompt) {
-                window.deferredPrompt.prompt();
-                window.deferredPrompt.userChoice.then((choice) => {
-                    if (choice.outcome === 'accepted') dismissPWABanner();
-                    window.deferredPrompt = null;
-                });
-                return;
-            }
-            if (isIOS()) {
-                const arrow = document.getElementById('pwa-install-arrow');
-                arrow.style.display = 'flex';
-                arrow.style.animation = 'none';
-                setTimeout(() => arrow.style.animation = 'pwaArrowBounce 0.5s ease-in-out 5', 10);
-            }
-        }
-        
+        let deferredInstallPrompt = null;
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
-            window.deferredPrompt = e;
-            showPWABanner();
+            deferredInstallPrompt = e;
+            if (!window.matchMedia('(display-mode: standalone)').matches && !sessionStorage.getItem('wb_prompted')) {
+                const b = document.createElement('div');
+                b.id = 'pwa-install-banner';
+                b.innerHTML = `<div style="position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#c41e3a,#8b1528);color:#eee;padding:12px 20px;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.3);display:flex;align-items:center;gap:12px;z-index:9999;max-width:90%;border:2px solid #ffd700;font-family:'Oswald',sans-serif;">
+                    <span style="font-size:1.5rem;">🥊</span>
+                    <div style="flex:1;"><div style="font-weight:600;">Install Word Boxing</div><div style="font-size:0.85rem;opacity:0.9;">Add to home screen</div></div>
+                    <button onclick="installPWA()" style="background:#ffd700;color:#12121f;border:none;padding:8px 16px;border-radius:8px;font-weight:600;cursor:pointer;">Install</button>
+                    <button onclick="dismissInstall()" style="background:transparent;border:none;color:#eee;font-size:1.2rem;cursor:pointer;opacity:0.7;">✕</button>
+                </div>`;
+                document.body.appendChild(b);
+            }
         });
-        
-        setTimeout(() => { if (!isStandalone()) showPWABanner(); }, 3000);
+        function installPWA() { if (deferredInstallPrompt) { deferredInstallPrompt.prompt(); deferredInstallPrompt.userChoice.then(() => { deferredInstallPrompt = null; dismissInstall(); }); } }
+        function dismissInstall() { const b = document.getElementById('pwa-install-banner'); if (b) b.remove(); sessionStorage.setItem('wb_prompted', 'true'); }
     </script>
 </body>
 </html>

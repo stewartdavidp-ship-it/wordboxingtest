@@ -1,61 +1,24 @@
-Word Boxing PWA v1.0.2 Release Notes
-=====================================
-Released: January 22, 2026
+wordboxing v1.0.4 Release Notes
+================================
 
-ABOUT WORD BOXING:
+Release Date: 2026-01-22
+
+Changes in v1.0.4:
 ------------------
-Multiplayer word battle game! Challenge friends to real-time
-word fights. Build words, score points, knock out your opponent!
+- Added gs-app-id meta tag for reliable app detection
+- Google Analytics 4 tracking (G-XRL2SVN0YF)
+- Fixed all version strings for consistency
 
-PWA FEATURES (NEW):
--------------------
-- Installable as standalone app on iOS/Android/Desktop
-- Works offline (single player mode)
-- Auto-updates when new version available
-- Install banner with iOS Safari instructions
-- Detects iOS vs Android and shows appropriate install steps
-- Banner dismisses for 24 hours when closed
+Version Locations:
+-----------------
+- Meta tag: 1.0.4
+- Service Worker: v1.0.4
+- About/Info UI: v1.0.4
+- (Game Shelf Module: 1.0.2 - separate)
 
-GAME FEATURES:
+Files Included:
 --------------
-- Real-time multiplayer via Firebase
-- Create or join match rooms
-- Build words from shared letter pool
-- Scoring based on word length and rarity
-- Round-based gameplay with knockouts
-- Solo practice mode available
-- Dark/light mode support
-- Share results with match stats
-- Game Shelf integration via GS badge
-
-DEPLOYMENT:
------------
-Upload to web server root (HTTPS required):
-  /index.html
-  /manifest.json  
-  /sw.js
-  /icons/icon-*.png (all sizes)
-
-FIREBASE SETUP:
----------------
-Word Boxing requires Firebase Realtime Database for multiplayer.
-Configure your Firebase project in the HTML file.
-
-THEME COLORS:
--------------
-- Background: #12121f (dark blue)
-- Red Corner: #c41e3a
-- Blue Corner: #1e4ec4
-- Gold: #ffd700
-- Text: #eee
-
-GAME SHELF COMPATIBILITY:
--------------------------
-- Share text format: "Word Boxing 🥊 [result]"
-- GS badge links to gameshelf.app
-- localStorage keys preserved for sync
-
-VERSION HISTORY:
-----------------
-v1.0.2 - PWA support added
-v1.0.1 - Initial release with GS integration
+- index.html (main app)
+- sw.js (service worker)
+- manifest.json (PWA manifest)
+- icons/ (PWA icons)
