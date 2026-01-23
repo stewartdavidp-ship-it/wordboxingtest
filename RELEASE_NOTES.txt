@@ -1,10 +1,18 @@
-Word Boxing v1.0.5
+Word Boxing v1.0.6
 ==================
 Release Date: January 23, 2025
 
-APP ICON WITH GS ORIGINALS BADGE
---------------------------------
-Updated icon featuring:
-- Gold boxing glove
-- Game Shelf puzzle piece logo at bottom center
-- Identifies as part of the GS Originals family
+MOBILE PWA UI FIX
+-----------------
+Fixed layout issues when running as PWA on mobile:
+
+- Added safe-area-inset support for notch/Dynamic Island
+- Removed yellow border from menu button
+- Made Sign In button more compact
+- Fixed title positioning (no longer overlaps with header buttons)
+- Moved boxing glove emoji to beginning of title
+- Added responsive font sizing for smaller screens
+- Proper spacing for all fixed header elements
+
+The app now properly respects iOS safe areas and has a cleaner
+mobile-first layout suitable for PWA usage.
