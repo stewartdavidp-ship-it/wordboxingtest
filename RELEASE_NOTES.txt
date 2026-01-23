@@ -1,18 +1,20 @@
-Word Boxing v1.0.6
+Word Boxing v1.0.7
 ==================
 Release Date: January 23, 2025
 
-MOBILE PWA UI FIX
------------------
-Fixed layout issues when running as PWA on mobile:
+MOBILE-FIRST UI REDESIGN
+------------------------
+Complete redesign of lobby screen for mobile PWA:
 
-- Added safe-area-inset support for notch/Dynamic Island
-- Removed yellow border from menu button
-- Made Sign In button more compact
-- Fixed title positioning (no longer overlaps with header buttons)
-- Moved boxing glove emoji to beginning of title
-- Added responsive font sizing for smaller screens
-- Proper spacing for all fixed header elements
+- Removed standalone title - integrated into lobby
+- Compact "WordBoxing" header (no emoji clutter)
+- Reduced padding and spacing throughout
+- Smaller, tighter buttons
+- Simplified labels: "Pass & Play" instead of long text
+- Removed distracting emojis from buttons
+- Cleaner dividers: "online" / "local" 
+- Leaderboard button with outline style (less prominent)
+- Proper safe-area support for notch/Dynamic Island
 
-The app now properly respects iOS safe areas and has a cleaner
-mobile-first layout suitable for PWA usage.
+The layout now fits comfortably on mobile screens without
+excessive scrolling or wasted space.
